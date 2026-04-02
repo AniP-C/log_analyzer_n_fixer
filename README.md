@@ -2,7 +2,7 @@
 
 **Autonomous AI Agent for Incident Detection and Resolution in Order Processing Systems** 🛠️
 
-![FlowFix Agent Demo](https://youtu.be/gt2NspmKD2s) <!-- Replace with actual demo GIF/image -->
+
 ## 🎬 Demo Video
 
 [![FlowFix Agent Demo](https://img.youtube.com/vi/gt2NspmKD2s/maxresdefault.jpg)](https://youtu.be/gt2NspmKD2s)
