@@ -29,8 +29,7 @@
 - [📊 Benchmark](#-benchmark)
 - [🧠 How the Agent Works](#-how-the-agent-works)
 - [📝 Notes](#-notes)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
+
 
 ---
 
@@ -301,7 +300,6 @@ Based on:
 - Resolution success
 - Response time
 
-![Benchmark Results](https://via.placeholder.com/600x300/28a745/ffffff?text=Benchmark+Results) <!-- Replace with actual chart -->
 
 ---
 
@@ -352,25 +350,10 @@ This ensures:
 
 ---
 
-## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. 🔄
 
-1. Fork the repository 🍴
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`) 🌟
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`) 💾
-4. Push to the branch (`git push origin feature/AmazingFeature`) 📤
-5. Open a Pull Request 📋
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 📜
-
----
-
-*Made with ❤️ by [Your Name](https://github.com/yourusername)*
+*Made with ❤️ by [Aniruddh Parashar](https://github.com/AniP-C)*
 
 CORS is open for local development
 
