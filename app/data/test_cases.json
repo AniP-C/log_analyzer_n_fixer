@@ -1,0 +1,22 @@
+[
+  {
+    "input": "Many orders stuck in CREATED status after a spike in downstream traffic",
+    "expected_issue_type": "workflow_stuck_bulk",
+    "expected_action": "retry_workflow"
+  },
+  {
+    "input": "Workflow timed out while waiting on downstream payment service for order 456",
+    "expected_issue_type": "workflow_failure",
+    "expected_action": "retry_workflow"
+  },
+  {
+    "input": "File batch 77 failed because a PayPal order is missing billing address",
+    "expected_issue_type": "faulty_order_paypal",
+    "expected_action": "remove_and_reprocess"
+  },
+  {
+    "input": "Batch export was delayed on the previous run and the next run shows a spike because two batches combined",
+    "expected_issue_type": "delayed_batch_export",
+    "expected_action": "no_action"
+  }
+]

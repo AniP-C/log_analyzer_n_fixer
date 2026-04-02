@@ -1,0 +1,51 @@
+[
+  {
+    "issue": "workflow_stuck_bulk",
+    "pattern": "many orders stuck in created",
+    "keywords": ["created", "many", "bulk", "spike"],
+    "fix": "retry_workflow",
+    "success_rate": 0.88
+  },
+  {
+    "issue": "workflow_failure",
+    "pattern": "timeout contacting downstream",
+    "keywords": ["timeout", "downstream", "service unavailable"],
+    "fix": "retry_workflow",
+    "success_rate": 0.83
+  },
+  {
+    "issue": "workflow_failure",
+    "pattern": "validation failed due to bad data",
+    "keywords": ["validation", "bad data", "schema"],
+    "fix": "escalate",
+    "success_rate": 0.79
+  },
+  {
+    "issue": "faulty_order_paypal",
+    "pattern": "paypal order missing billing address",
+    "keywords": ["paypal", "billing address", "missing"],
+    "fix": "remove_and_reprocess",
+    "success_rate": 0.91
+  },
+  {
+    "issue": "delayed_batch_export",
+    "pattern": "previous run delayed next run spike",
+    "keywords": ["delayed", "next run", "spike", "combined"],
+    "fix": "no_action",
+    "success_rate": 0.94
+  },
+  {
+    "issue": "workflow_stuck",
+    "pattern": "order stuck in processing",
+    "keywords": ["stuck", "processing", "waiting"],
+    "fix": "retry_workflow",
+    "success_rate": 0.76
+  },
+  {
+    "issue": "file_processing_failure",
+    "pattern": "batch job failed",
+    "keywords": ["batch", "job failed", "processing failure"],
+    "fix": "isolate_and_rerun_batch",
+    "success_rate": 0.8
+  }
+]

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowFix Agent</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      font: inherit;
+      box-sizing: border-box;
+    }
+
+    .button-group {
+      margin-bottom: 12px;
+    }
+
+    .button-group button {
+      margin: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .status {
+      min-height: 20px;
+      margin-bottom: 12px;
+      color: #444;
+    }
+
+    .summary {
+      margin-bottom: 12px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      white-space: pre-line;
+    }
+
+    .output {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background: #111;
+      color: #0f0;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      max-height: 400px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FlowFix Agent</h1>
+      <p>FastAPI-based SRE agent focused on safe remediation, explainable reasoning, and MTTR reduction.</p>
+    </header>
+    <textarea id="input" placeholder="Paste an incident or log excerpt"></textarea>
+    <div class="button-group">
+      <button id="analyzeBtn" type="button">Analyze Incident</button>
+      <button type="button" data-sample="Many orders stuck in CREATED status after a spike in downstream traffic">Bulk stuck</button>
+      <button type="button" data-sample="Workflow timed out while waiting on downstream payment service for order 456">Timeout</button>
+      <button type="button" data-sample="File batch 77 failed because a PayPal order is missing billing address">PayPal blocker</button>
+      <button type="button" data-sample="Batch export was delayed on the previous run and the next run shows a spike because two batches combined">Delayed batch</button>
+    </div>
+    <div class="status" id="status"></div>
+    <div class="summary" id="summary">
+      Decision: ready
+      Confidence: -
+      Severity: -
+    </div>
+    <pre class="output" id="output">{
+  "status": "ready"
+}</pre>
+  </div>
+
+  <script>
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+    const status = document.getElementById("status");
+    const summary = document.getElementById("summary");
+    const analyzeBtn = document.getElementById("analyzeBtn");
+
+    document.querySelectorAll("[data-sample]").forEach((button) => {
+      button.addEventListener("click", () => {
+        input.value = button.getAttribute("data-sample");
+      });
+    });
+
+    analyzeBtn.addEventListener("click", async () => {
+      const value = input.value.trim();
+      if (!value) {
+        status.textContent = "Add an incident before running the agent.";
+        return;
+      }
+
+      status.textContent = "Analyzing incident...";
+      summary.textContent = "Waiting for agent response...";
+      output.textContent = "{\n  \"status\": \"running\"\n}";
+
+      try {
+        const response = await fetch("/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ input: value })
+        });
+
+        const data = await response.json();
+        summary.textContent = [
+          `Decision: ${data.decision ?? "-"}`,
+          `Confidence: ${data.confidence ?? "-"}`,
+          `Severity: ${data.severity ?? "-"}`
+        ].join("\n");
+        output.textContent = JSON.stringify(data, null, 2);
+        status.textContent = response.ok ? "Analysis complete." : "Request failed.";
+      } catch (error) {
+        summary.textContent = "Decision: error\nConfidence: -\nSeverity: -";
+        output.textContent = JSON.stringify({ error: String(error) }, null, 2);
+        status.textContent = "Agent request failed.";
+      }
+    });
+  </script>
+</body>
+</html>
