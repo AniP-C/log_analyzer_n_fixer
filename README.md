@@ -1,14 +1,5 @@
 # 🚀 FlowFix Agent
 
-[![Python Version](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/Log_Analyzer_CV/ci.yml)](https://github.com/yourusername/Log_Analyzer_CV/actions)
-[![Coverage](https://img.shields.io/codecov/c/github/yourusername/Log_Analyzer_CV)](https://codecov.io/gh/yourusername/Log_Analyzer_CV)
-[![Issues](https://img.shields.io/github/issues/yourusername/Log_Analyzer_CV)](https://github.com/yourusername/Log_Analyzer_CV/issues)
-[![Stars](https://img.shields.io/github/stars/yourusername/Log_Analyzer_CV)](https://github.com/yourusername/Log_Analyzer_CV/stargazers)
-[![Forks](https://img.shields.io/github/forks/yourusername/Log_Analyzer_CV)](https://github.com/yourusername/Log_Analyzer_CV/network/members)
-[![Last Commit](https://img.shields.io/github/last-commit/yourusername/Log_Analyzer_CV)](https://github.com/yourusername/Log_Analyzer_CV/commits/main)
-
 **Autonomous AI Agent for Incident Detection and Resolution in Order Processing Systems** 🛠️
 
 ![FlowFix Agent Demo](https://youtu.be/gt2NspmKD2s) <!-- Replace with actual demo GIF/image -->
